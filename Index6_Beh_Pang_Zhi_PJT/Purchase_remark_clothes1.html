@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="Style.css" />
+  <title>LetShop Product</title>
+</head>
+
+<body>
+  <header>
+    <a href="index.html" style="text-decoration: none; color: black; font-weight: bold; font-size: 1.5rem;">LetShop</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="Product.html">Product</a>
+      <a href="About us.html">About</a>
+      <a href="Contact.html">Contact us</a>
+    </nav>
+  </header>
+
+  <!-- Responsive Product Section -->
+  <main class="product-section">
+    <div class="product-images">
+      <div id="player_1_container" class="playerContainer">
+        <div id="player_1"></div>
+        <div class="imageContainer">
+          <!-- Show the black shirt by default -->
+          <div class="images clothes_1" style="display: block;"></div>
+          <!-- Hide the white shirt initially -->
+          <div class="images clothes_white_4" style="display: none;"></div>
+        </div>
+      </div>
+      <div class="color-options">
+        <p><strong>Colour</strong></p>
+        <a class="chooseColor" data-action="show_clothes_1" href="javascript:void(0)" aria-label="Select Black Shirt">
+          <img src="Images/Black.jpg" width="30" height="30" alt="Black shirt color option" />
+        </a>
+        <a class="chooseColor" data-action="show_clothes_white_4" href="javascript:void(0)"
+          aria-label="Select White Shirt">
+          <img src="Images/White.jpg" width="30" height="30" alt="White shirt color option" />
+        </a>
+        <hr />
+        <p class="price">$12.00</p>
+        <button class="btn1" type="button">Buy Now</button>
+      </div>
+    </div>
+
+    <div class="product-details">
+      <section class="description">
+        <h2>Product Description</h2>
+        <p>
+          "Unleash a touch of ancient mystique with our Mystic Phoenix Emblem T-shirt. Featuring a detailed,
+          stylized phoenix rising within an ornate shield design, this tee exudes power and rebirth. The intricate
+          metallic-toned print stands out beautifully against the solid color fabric, making it a unique statement
+          piece for those who appreciate symbolic and timeless graphics. Crafted for comfort and style, this shirt
+          is perfect for adding an intriguing edge to your everyday wear."
+        </p>
+      </section>
+
+      <section class="remarks">
+        <h2>Remarks</h2>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit.<br />
+          Dolor blanditiis, vel, voluptates laudantium earum voluptate <br />
+          qui corrupti consequuntur aliquam fugiat reprehenderit adipisci <br />
+          temporibus rem? Libero voluptatum nobis minima dicta cum.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer">
+      <a href="index.html">Home |</a>
+      <a href="Product.html">Product |</a>
+      <a href="About us.html">About |</a>
+      <a href="Contact.html">Contact |</a>
+      <hr />
+      <img src="Images/Fb.jpg" alt="Facebook" />
+      <img src="Images/twitter.jpg" alt="Twitter" />
+      <img src="Images/Instragram.jpg" alt="Instagram" />
+      <img src="Images/Whatsapp.jpg" alt="WhatsApp" />
+      <img src="Images/googleplus.jpg" alt="Google+" />
+    </div>
+  </footer>
+
+  <script>
+    function setupPlayer(playerContainerId) {
+      const playerContainer = document.getElementById(playerContainerId);
+      const playerImageContainer = playerContainer.querySelector('.imageContainer');
+
+      // Get the two images and set them to be hidden or shown initially
+      const clothes1 = playerImageContainer.querySelector('.clothes_1');
+      const clothesWhite4 = playerImageContainer.querySelector('.clothes_white_4');
+
+      // Select all color option links
+      document.querySelectorAll('.chooseColor').forEach(function (button) {
+        button.addEventListener('click', function (event) {
+          // Log to check if the event fires correctly
+          console.log('Clicked on: ', button.dataset.action);
+
+          // Hide all images first
+          clothes1.style.display = 'none';
+          clothesWhite4.style.display = 'none';
+
+          // Get the data-action value from the clicked <a>
+          const action = button.dataset.action;
+
+          // Show the correct image based on the selected color
+          if (action === 'show_clothes_1') {
+            clothes1.style.display = 'block';
+          } else if (action === 'show_clothes_white_4') {
+            clothesWhite4.style.display = 'block';
+          }
+        });
+      });
+    }
+
+    // Initialize the player with the correct container
+    setupPlayer('player_1_container');
+  </script>
+</body>
+
+</html>
